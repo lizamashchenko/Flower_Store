@@ -1,2 +1,3 @@
-package flower.store;public class Item {
+package flower.store;
+public class Item {
 }

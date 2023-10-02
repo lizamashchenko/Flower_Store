@@ -1,6 +1,5 @@
 package flower.store;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,9 +21,8 @@ public class FlowerPack {
     }
     public void setQuantity(int quantityDif) {
         quantity += quantityDif;
-        quantity = quantity < 1 ? 1 : quantity;
+        quantity = Math.max(quantity, 1);
         updatePrice();
-
     }
     private void updatePrice() {
         packPrice = quantity * flower.getPrice();

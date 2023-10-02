@@ -8,7 +8,7 @@ public class FlowerBucket {
     private double bucketPrice = 0;
 
     public void addPack(FlowerPack pack) {
-        if(containsFlower(pack.getFlower())) {
+        if (containsFlower(pack.getFlower())) {
             increaseQuantity(pack.getFlower(), pack.getQuantity());
         }
         flowerPacks.add(pack);
@@ -26,16 +26,18 @@ public class FlowerBucket {
     private void increaseQuantity(Flower flower, int quantityAdded) {
         int i = 0;
         FlowerType flowerType = flower.getFlowerType();
-        while(!flowerPacks.get(i).getFlower().equals(flowerType)) {
+        while (!flowerPacks.get(i).getFlower().equals(flowerType)) {
             i++;
         }
         flowerPacks.get(i).setQuantity(quantityAdded);
         updatePrice(flower.getPrice() * quantityAdded);
     }
     private boolean containsFlower(Flower flower) {
-        for(FlowerPack flowerPack : flowerPacks) {
-            if(flowerPack.getFlower().getFlowerType().equals(flower.getFlowerType()))
+        for (FlowerPack flowerPack : flowerPacks) {
+            if (flowerPack.getFlower().getFlowerType()
+                    .equals(flower.getFlowerType())) {
                 return true;
+            }
         }
         return false;
     }

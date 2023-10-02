@@ -1,2 +1,3 @@
-package flower.store;public class Filter {
+package flower.store;
+public class Filter {
 }
