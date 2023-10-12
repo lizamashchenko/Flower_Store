@@ -11,7 +11,7 @@ public class FlowerBucket {
 
     }
     public FlowerBucket(List<FlowerPack> flowerPacks) {
-        for (FlowerPack fp : flowerPacks){
+        for (FlowerPack fp : flowerPacks) {
             this.flowerPacks.add(fp);
             updatePrice(fp.getPackPrice());
         }
@@ -62,9 +62,10 @@ public class FlowerBucket {
     }
 
     public boolean matches(FlowerBucket other) {
-        for(FlowerPack p : flowerPacks) {
-            if(!other.containsFlowerPack(p))
+        for (FlowerPack p : flowerPacks) {
+            if (!other.containsFlowerPack(p)) {
                 return false;
+            }
         }
         return other.matches(this);
     }

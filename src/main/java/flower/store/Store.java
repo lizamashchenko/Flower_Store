@@ -12,20 +12,21 @@ public class Store {
     }
 
     public boolean addFlower(Flower flower, int quantity) {
-        if(quantity <= 0) {
+        if (quantity <= 0) {
             return false;
         }
 
         for (FlowerPack pack : flowers) {
-            if(pack.getFlower() == flower)
+            if (pack.getFlower() == flower) {
                 return false;
+            }
         }
         flowers.add(new FlowerPack(flower, quantity));
         return true;
     }
 
     public boolean createBucket(List<FlowerPack> flowerPacks) {
-        if(haveAllFlowers(flowerPacks)) {
+        if (haveAllFlowers(flowerPacks)) {
             buckets.add(new FlowerBucket(flowerPacks));
             return true;
         }
@@ -33,8 +34,8 @@ public class Store {
     }
 
     private boolean haveAllFlowers(List<FlowerPack> flowerPacks) {
-        for(FlowerPack p : flowerPacks) {
-            if(!search(p)) {
+        for (FlowerPack p : flowerPacks) {
+            if (!search(p)) {
                 return false;
             }
         }
@@ -50,23 +51,26 @@ public class Store {
     }
 
     public FlowerPack search(Flower flower) {
-        for(FlowerPack f : flowers) {
-            if(f.getFlower() == flower)
+        for (FlowerPack f : flowers) {
+            if (f.getFlower() == flower) {
                 return f;
+            }
         }
         return null;
     }
     public FlowerBucket search(FlowerBucket bucket) {
-        for(FlowerBucket fb : buckets) {
-            if(fb.matches(bucket))
+        for (FlowerBucket fb : buckets) {
+            if (fb.matches(bucket)) {
                 return fb;
+            }
         }
         return null;
     }
     public boolean search(FlowerPack flowerPack) {
-        for(FlowerPack fl : flowers) {
-            if(fl.matches(flowerPack))
+        for (FlowerPack fl : flowers) {
+            if (fl.matches(flowerPack)) {
                 return true;
+            }
         }
         return false;
     }

@@ -28,10 +28,11 @@ public class FlowerPack {
         packPrice = quantity * flower.getPrice();
     }
 
-    public boolean sell(int quantity) {
-        if(this.quantity < quantity)
+    public boolean sell(int amount) {
+        if (this.quantity < amount) {
             return false;
-        this.quantity -= quantity;
+        }
+        this.quantity -= amount;
         return true;
     }
 
