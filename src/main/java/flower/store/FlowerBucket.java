@@ -7,6 +7,16 @@ public class FlowerBucket {
     private List<FlowerPack> flowerPacks = new ArrayList<>();
     private double bucketPrice = 0;
 
+    public FlowerBucket() {
+
+    }
+    public FlowerBucket(List<FlowerPack> flowerPacks) {
+        for (FlowerPack fp : flowerPacks){
+            this.flowerPacks.add(fp);
+            updatePrice(fp.getPackPrice());
+        }
+    }
+
     public void addPack(FlowerPack pack) {
         if (containsFlower(pack.getFlower())) {
             increaseQuantity(pack.getFlower(), pack.getQuantity());
@@ -23,6 +33,7 @@ public class FlowerBucket {
     public double getBucketPrice() {
         return bucketPrice;
     }
+
     private void increaseQuantity(Flower flower, int quantityAdded) {
         int i = 0;
         FlowerType flowerType = flower.getFlowerType();
@@ -44,5 +55,17 @@ public class FlowerBucket {
 
     private void updatePrice(double priceDif) {
         bucketPrice += priceDif;
+    }
+
+    private boolean containsFlowerPack(FlowerPack p) {
+        return flowerPacks.contains(p);
+    }
+
+    public boolean matches(FlowerBucket other) {
+        for(FlowerPack p : flowerPacks) {
+            if(!other.containsFlowerPack(p))
+                return false;
+        }
+        return other.matches(this);
     }
 }

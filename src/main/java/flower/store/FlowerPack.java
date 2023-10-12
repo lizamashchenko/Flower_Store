@@ -28,4 +28,15 @@ public class FlowerPack {
         packPrice = quantity * flower.getPrice();
     }
 
+    public boolean sell(int quantity) {
+        if(this.quantity < quantity)
+            return false;
+        this.quantity -= quantity;
+        return true;
+    }
+
+    public boolean matches(FlowerPack other) {
+        return (other.getFlower() == flower && other.getQuantity() <= quantity);
+    }
+
 }
